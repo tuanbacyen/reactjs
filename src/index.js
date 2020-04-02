@@ -49,6 +49,7 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        idex: null,
       }],
       stepNumber: 0,
       isNext: true,
@@ -66,6 +67,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        idex: i,
       }]),
       stepNumber: history.length,
       isNext: !this.state.isNext,
@@ -86,7 +88,7 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
+        `Go to move #${move}, point ${renderPoint(history[move].idex)}` :
         'Go to game start';
       return (
         <li key={move}>
@@ -142,4 +144,25 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+function renderPoint(point) {
+  let line, col;
+  if (point < 3) {
+    line = 0;
+  } else if (point > 5) {
+    line = 2;
+  } else {
+    line = 1;
+  }
+
+  if ([0, 3, 6].includes(point)) {
+    col = 0;
+  } else if ([1, 4, 7].includes(point)) {
+    col = 1;
+  } else {
+    col = 2;
+  }
+  
+  return `[${line}, ${col}]`;
 }
