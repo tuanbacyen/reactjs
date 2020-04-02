@@ -57,3 +57,11 @@ ol, ul {
   font-weight: bold;
   border-color: coral;
 }
+
+.game-info .a-z {
+  background-color: yellowgreen;
+}
+
+.game-info .z-a {
+  background-color: blue;
+}
