@@ -45,23 +45,6 @@ ol, ul {
   flex-direction: row;
 }
 
-.game .display-winner {
-  background-color: #FFD7CF;
-}
-
 .game-info {
   margin-left: 20px;
-}
-
-.game-info .bold-and-border {
-  font-weight: bold;
-  border-color: coral;
-}
-
-.game-info .a-z {
-  background-color: yellowgreen;
-}
-
-.game-info .z-a {
-  background-color: blue;
 }
