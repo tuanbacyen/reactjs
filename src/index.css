@@ -48,3 +48,8 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.game-info .bold-and-border {
+  font-weight: bold;
+  border-color: coral;
+}
