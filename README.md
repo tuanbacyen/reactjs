@@ -7,3 +7,5 @@ Day 2: Make additionnal for tic tac toe demo
   > Thêm toogle button cho phép sắp sếp các bước đi theo thứ tự tăng hoặc giảm.<br>
   > Khi một người chơi thắng cuộc, highlight ba ô vuông dẫn đến chiến thắng.<br>
   > Khi không ai thắng cuộc, hiển thị thông báo kết quả hòa.<br>
+
+Day xxx: Show xxx toy: https://github.com/tuanbacyen/reactjs/tree/shop-product-card
