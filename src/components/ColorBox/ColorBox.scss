@@ -1,0 +1,11 @@
+$box-size: 200px;
+
+.color-box {
+  display: inline-block;
+  width: $box-size;
+  height: $box-size;
+  border-radius: 50%;
+
+  transition: all 0.2s ease-in-out 0s;
+  cursor: pointer;
+}
