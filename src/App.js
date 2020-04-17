@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-// import ColorBox from './components/ColorBox';
 import TodoList from './components/TodoList';
 
+function makeList() {
+  return [
+    { id: 1, title: 'this is title 1 why you see me 😁' },
+    { id: 2, title: 'this is title 2 wowwwww 😜' },
+    { id: 3, title: 'this is title 3 let do it 🚯' }
+  ];
+}
+
 function App() {
+  const [listTodo, setListTodo] = useState(() => {
+    const items = makeList();
+
+    return items
+  });
+
+  function handleTodoClick(todo) {
+    if (todo === null) return;
+
+    const index = listTodo.findIndex(x => x.id === todo.id)
+    if (index < 0) return;
+    const newList = [...listTodo];
+    newList.splice(index, 1);
+    setListTodo(newList);
+  }
+
   return (
     <div className="app">
       Hello world
-      {/* <ColorBox /> */}
-      <TodoList />
+      <TodoList
+        listTodo={listTodo}
+        handleTodoClick={handleTodoClick}
+      />
     </div>
   );
 }

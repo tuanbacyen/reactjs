@@ -1,38 +1,14 @@
-import React, { useState } from 'react';
-
-function makeList() {
-  return [
-    { id: 1, title: 'this is title 1 why you see me 😁' },
-    { id: 2, title: 'this is title 2 wowwwww 😜' },
-    { id: 3, title: 'this is title 3 let do it 🚯' }
-  ];
-}
+import React from 'react';
 
 function TodoList(props) {
-  const [listTodo, setListTodo] = useState(() => {
-    const items = makeList();
-
-    return items
-  });
-
-  function handleTodoClick(todo) {
-    if (todo === null) return;
-
-    const index = listTodo.findIndex(x => x.id === todo.id)
-    if (index < 0) return;
-    const newList = [...listTodo];
-    newList.splice(index, 1);
-    setListTodo(newList);
-  }
-
   return (
     < div >
       <ul>
         {
-          listTodo.map(todo =>
+          props.listTodo.map(todo =>
             <li
               key={todo.id}
-              onClick={() => handleTodoClick(todo)}
+              onClick={() => props.handleTodoClick(todo)}
             >
               {todo.title}
             </li>
