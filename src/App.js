@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
 function makeList() {
   return [
@@ -27,9 +28,16 @@ function App() {
     setListTodo(newList);
   }
 
+  function onSubmit(title) {
+    setListTodo([...listTodo, { id: listTodo.length + 1, title }])
+  }
+
   return (
     <div className="app">
       Hello world
+      <TodoForm
+        onSubmit={onSubmit}
+      />
       <TodoList
         listTodo={listTodo}
         handleTodoClick={handleTodoClick}
