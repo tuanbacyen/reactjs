@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import PostList from './components/PostList';
 
 function makeList() {
   return [
@@ -32,16 +33,37 @@ function App() {
     setListTodo([...listTodo, { id: listTodo.length + 1, title }])
   }
 
+  const [postList, setpostList] = useState([]);
+
+  useEffect(() => {
+    async function fetchPostList() {
+      try {
+        const requestUrl = 'http://js-post-api.herokuapp.com/api/posts?_limit=10&_page=1';
+        const response = await fetch(requestUrl);
+        const responseJSON = await response.json();
+        console.log({ responseJSON });
+
+        const { data } = responseJSON;
+        setpostList(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchPostList();
+  }, []);
+
   return (
     <div className="app">
       Hello world
-      <TodoForm
+      <PostList posts={postList} />
+      {/* <TodoForm
         onSubmit={onSubmit}
       />
       <TodoList
         listTodo={listTodo}
         handleTodoClick={handleTodoClick}
-      />
+      /> */}
     </div>
   );
 }
