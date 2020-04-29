@@ -47,7 +47,6 @@ function App() {
   }
 
   function handlePageChange(newPage) {
-    console.log('asdasd', newPage);
     setFilters({ ...filters, _page: newPage });
   }
 
