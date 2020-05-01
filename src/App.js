@@ -6,6 +6,7 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/pagination';
+import PostFilterForm from './components/PostFilterForm';
 
 function makeList() {
   return [
@@ -21,7 +22,7 @@ function App() {
 
     return items
   });
-  const [postList, setpostList] = useState([]);
+  const [postList, setPostList] = useState([]);
   const [pagination, setPagination] = useState({
     _page: 0,
     _limit: 0,
@@ -30,6 +31,7 @@ function App() {
   const [filters, setFilters] = useState({
     _limit: 10,
     _page: 1,
+    title_like: '',
   })
 
   function handleTodoClick(todo) {
@@ -50,6 +52,15 @@ function App() {
     setFilters({ ...filters, _page: newPage });
   }
 
+  function handleFilterChange(newFilter) {
+    console.log(newFilter);
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: newFilter.searchTerm,
+    });
+  }
+
   useEffect(() => {
     async function fetchPostList() {
       try {
@@ -59,7 +70,7 @@ function App() {
         const responseJSON = await response.json();
 
         const { data, pagination } = responseJSON;
-        setpostList(data);
+        setPostList(data);
         setPagination(pagination);
       } catch (error) {
         console.log(error.message);
@@ -72,6 +83,7 @@ function App() {
   return (
     <div className="app">
       Hello world
+      <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
       {/* <TodoForm
