@@ -1,9 +1,7 @@
 import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import BetterClock from './components/BetterClock';
-import Clock from './components/Clock';
-
+import MagicBox from './components/MagicBox/MagicBox';
 
 function makeList() {
   return [
@@ -83,11 +81,13 @@ function App() {
     <div className="app">
       <h1>Hello world</h1>
 
-      {showClock && <Clock />}
+      <MagicBox />
+
+      {/* {showClock && <Clock />}
       <BetterClock />
       <button onClick={() => setShowClock(!showClock)}>{showClock ? 'hide clock' : 'show clock'}</button>
 
-      {/* <PostFilterForm onSubmit={handleFilterChange} />
+      <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
       <TodoForm
