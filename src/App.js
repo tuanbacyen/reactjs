@@ -7,6 +7,7 @@ import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/pagination';
 import PostFilterForm from './components/PostFilterForm';
+import Clock from './components/Clock';
 
 function makeList() {
   return [
@@ -80,13 +81,19 @@ function App() {
     fetchPostList();
   }, [filters]);
 
+  const [showClock, setShowClock] = useState(true);
+
   return (
     <div className="app">
-      Hello world
-      <PostFilterForm onSubmit={handleFilterChange} />
+      <h1>Hello world</h1>
+
+      {showClock && <Clock />}
+      <button onClick={() => setShowClock(!showClock)}>{showClock ? 'hide clock' : 'show clock'}</button>
+
+      {/* <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
-      {/* <TodoForm
+      <TodoForm
         onSubmit={onSubmit}
       />
       <TodoList
